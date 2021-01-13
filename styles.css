@@ -36,6 +36,7 @@ header {
   flex-direction: column;
 }
 
+/*--------input-------------*/
 header input {
   width: 100%;
   max-width: 280px;
@@ -57,7 +58,7 @@ header input {
 header input:focus {
   background-color: rgba(255, 255, 255, 0.6);
 }
-
+/*------------main styles---------*/
 main {
   flex: 1 1 100%;
   padding: 25px 25px 50px;
@@ -100,9 +101,35 @@ main {
   text-shadow: 0px 3px rgba(0, 0, 0, 0.4);
 }
 
-.current .hi-low {
+/*--------Forecast-Wrap-------*/
+
+.forecast-wrap {
+  display: flex;
+  background-color: #88452896;
+}
+
+.forecast-wrap .location .date {
   color: #fff;
-  font-size: 24px;
+  font-size: 16px;
+}
+
+.forecast-wrap .current .temp {
+  color: #fff;
+  font-size: 50px;
+  font-weight: 900;
+  margin: 30px 0px;
+  text-shadow: 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.forecast-wrap .current .temp span {
   font-weight: 500;
-  text-shadow: 0px 4px rgba(0, 0, 0, 0.4);
+}
+
+.forecast-wrap .current .weather {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  font-style: italic;
+  margin-bottom: 15px;
+  text-shadow: 0px 3px rgba(0, 0, 0, 0.4);
 }
