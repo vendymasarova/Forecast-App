@@ -10,7 +10,6 @@ function setQuery(evt) {
   if (evt.keyCode == 13) {
     getResults(searchbox.value);
     getForecast(searchbox.value);
-    console.log("pressed");
   }
 }
 
@@ -106,19 +105,24 @@ function dateBuilder(d) {
 let cities = [];
 fetch("city.list.json")
   .then((blob) => blob.json())
-  .then((data) => (cities = data));
+  .then((data) => (cities = data.map((it) => it.name)));
 
 const suggestionsPanel = document.querySelector(".suggestions");
 
-searchbox.addEventListener("change", function () {
+searchbox.addEventListener("keyup", function () {
   const input = searchbox.value;
+
+  if (input === undefined || input === "") {
+    return;
+  }
+
   suggestionsPanel.innerHTML = "";
   const suggestions = cities.filter(function (country) {
-    return country.name.toLowerCase().startsWith(input);
+    return country.toLowerCase().startsWith(input);
   });
-  suggestions.forEach(function (suggested) {
+  suggestions.slice(0, 5).forEach(function (suggested) {
     const div = document.createElement("option");
-    div.innerHTML = suggested.name;
+    div.innerHTML = suggested;
     suggestionsPanel.appendChild(div);
   });
 });
