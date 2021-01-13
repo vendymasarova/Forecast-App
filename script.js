@@ -9,8 +9,38 @@ searchbox.addEventListener("keypress", setQuery);
 function setQuery(evt) {
   if (evt.keyCode == 13) {
     getResults(searchbox.value);
+    getForecast(searchbox.value);
     console.log("pressed");
   }
+}
+
+function getForecast(query) {
+  fetch(`${api.base}forecast?q=${query}&units=metric&APPID=${api.key}`).then(
+    (weather) => {
+      weather.json().then((forecast) => {
+        let days = [
+          forecast.list[0],
+          forecast.list[8],
+          forecast.list[16],
+          forecast.list[24],
+          forecast.list[32],
+        ];
+        let containers = document.querySelectorAll(".forecast-wrap main");
+        for (let index = 0; index < days.length; index++) {
+          const day = days[index];
+          const container = containers[index];
+          const date = dateBuilder(new Date(day.dt * 1000));
+          container.querySelector(".date").innerText = date;
+          const temp = day.main.temp;
+          container.querySelector(".temp").innerHTML = `${Math.round(
+            temp
+          )}<span>°c<span>`;
+          const mainWeather = day.weather[0].description;
+          container.querySelector(".weather").innerHTML = mainWeather;
+        }
+      });
+    }
+  );
 }
 
 function getResults(query) {
