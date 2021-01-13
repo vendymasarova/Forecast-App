@@ -100,3 +100,25 @@ function dateBuilder(d) {
 
   return `${day} ${date} ${month} ${year}`;
 }
+
+//Našeptávač city.list.json
+
+let cities = [];
+fetch("city.list.json")
+  .then((blob) => blob.json())
+  .then((data) => (cities = data));
+
+const suggestionsPanel = document.querySelector(".suggestions");
+
+searchbox.addEventListener("change", function () {
+  const input = searchbox.value;
+  suggestionsPanel.innerHTML = "";
+  const suggestions = cities.filter(function (country) {
+    return country.name.toLowerCase().startsWith(input);
+  });
+  suggestions.forEach(function (suggested) {
+    const div = document.createElement("option");
+    div.innerHTML = suggested.name;
+    suggestionsPanel.appendChild(div);
+  });
+});
