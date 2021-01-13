@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Předpověd počasí</title>
     <link rel="stylesheet" href="styles.css" />
-    <title>Weather App</title>
   </head>
   <body>
     <div class="container">
@@ -12,9 +12,10 @@
         <header>
           <input
             type="text"
+            list="cities"
             id="city"
             class="search-box"
-            placeholder="Search for a city"
+            placeholder="Search for a city..."
           />
         </header>
         <main>
@@ -23,9 +24,8 @@
             <div class="date">Thursday 10 January 2020</div>
           </section>
           <div class="current">
-            <div class="temp">15 <span>°c</span></div>
+            <div class="temp">15 <span>°C</span></div>
             <div class="weather">Sunny</div>
-            <div class="hi-low">13°c / 16°c</div>
           </div>
         </main>
       </div>
