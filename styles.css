@@ -58,28 +58,6 @@ header input {
 header input:focus {
   background-color: rgba(255, 255, 255, 0.6);
 }
-/*----------suggestions-----------*/
-
-.suggestions > option {
-  width: 100%;
-  max-width: 280px;
-  padding: 8px 100px;
-  border: none;
-  outline: none;
-  background-color: rgba(255, 255, 255, 0.3);
-  font-size: 15px;
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-  border-top: 1px solid #ae7765;
-  cursor: pointer;
-  transition: 0.5s;
-}
-
-.suggestions > option:hover {
-  background-color: rgba(255, 255, 255, 0.6);
-}
 
 /*------------main styles---------*/
 main {
@@ -131,6 +109,15 @@ main {
   background-color: #88452896;
 }
 
+.forecast-wrap main {
+  transition: 0.5s;
+  padding: 30px 15px;
+}
+
+.forecast-wrap main:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
 .forecast-wrap .location .date {
   color: #fff;
   font-size: 14px;
@@ -153,6 +140,15 @@ main {
   font-size: 20px;
   font-weight: 700;
   font-style: italic;
-  margin-bottom: 15px;
   text-shadow: 0px 3px rgba(0, 0, 0, 0.4);
+}
+
+.forecast-wrap .weather {
+  margin-bottom: 0;
+}
+
+@media only screen and (max-width: 800px) {
+  .forecast-wrap {
+    flex-direction: column;
+  }
 }
